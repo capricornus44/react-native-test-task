@@ -8,7 +8,7 @@ import {
   StyleSheet,
 } from 'react-native';
 
-export const LoginScreen = () => {
+export const LoginScreen = ({navigation}) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -45,7 +45,11 @@ export const LoginScreen = () => {
         <View style={styles.question}>
           <Text style={styles.text}>
             Don’t you have an account yet?{' '}
-            <Text style={styles.link}>Sign Up</Text>
+            <Text
+              style={styles.link}
+              onPress={() => navigation.navigate('Registration')}>
+              Sign Up
+            </Text>
           </Text>
         </View>
       </View>
