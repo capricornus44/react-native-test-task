@@ -8,37 +8,28 @@ import {
   StyleSheet,
 } from 'react-native';
 
-export const RegisterScreen = ({navigation}) => {
+export const LoginScreen = ({navigation}) => {
   const [email, setEmail] = useState('');
-  const [name, setName] = useState('');
   const [password, setPassword] = useState('');
 
   return (
     <View style={styles.container}>
       <View style={styles.heading}>
-        <Text style={styles.title}>Create an Account</Text>
+        <Text style={styles.title}>Welcome Back</Text>
       </View>
       <View style={styles.form}>
         <View style={styles.field}>
           <Image
             style={styles.envelope}
-            source={require('../assets/icons/envelope.png')}
+            source={require('../../assets/icons/envelope.png')}
           />
           <TextInput style={styles.input} value={email} placeholder="Email" />
         </View>
 
         <View style={styles.field}>
           <Image
-            style={styles.info}
-            source={require('../assets/icons/info.png')}
-          />
-          <TextInput style={styles.input} value={name} placeholder="Name" />
-        </View>
-
-        <View style={styles.field}>
-          <Image
             style={styles.lock}
-            source={require('../assets/icons/lock.png')}
+            source={require('../../assets/icons/lock.png')}
           />
           <TextInput
             style={styles.input}
@@ -48,16 +39,16 @@ export const RegisterScreen = ({navigation}) => {
         </View>
 
         <TouchableOpacity style={styles.button} activeOpacity={0.8}>
-          <Text style={styles.label}>sign up</Text>
+          <Text style={styles.label}>log in</Text>
         </TouchableOpacity>
 
         <View style={styles.question}>
           <Text style={styles.text}>
-            Already have an account?{' '}
+            Don’t you have an account yet?{' '}
             <Text
               style={styles.link}
-              onPress={() => navigation.navigate('Login')}>
-              Log In
+              onPress={() => navigation.navigate('Registration')}>
+              Sign Up
             </Text>
           </Text>
         </View>
@@ -96,11 +87,6 @@ const styles = StyleSheet.create({
     height: 14,
     marginRight: 11,
   },
-  info: {
-    width: 20,
-    height: 20,
-    marginRight: 12,
-  },
   lock: {
     width: 16,
     height: 18,
@@ -115,7 +101,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: '#E8B0B6',
     height: 64,
-    marginTop: 68,
+    marginTop: 133,
     marginBottom: 32,
   },
   label: {
