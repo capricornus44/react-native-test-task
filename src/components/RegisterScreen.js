@@ -8,14 +8,15 @@ import {
   StyleSheet,
 } from 'react-native';
 
-export const Login = () => {
+export const RegisterScreen = () => {
   const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
   const [password, setPassword] = useState('');
 
   return (
     <View style={styles.container}>
       <View style={styles.heading}>
-        <Text style={styles.title}>Welcome Back</Text>
+        <Text style={styles.title}>Create an Account</Text>
       </View>
       <View style={styles.form}>
         <View style={styles.field}>
@@ -24,6 +25,14 @@ export const Login = () => {
             source={require('../assets/icons/envelope.png')}
           />
           <TextInput style={styles.input} value={email} placeholder="Email" />
+        </View>
+
+        <View style={styles.field}>
+          <Image
+            style={styles.info}
+            source={require('../assets/icons/info.png')}
+          />
+          <TextInput style={styles.input} value={name} placeholder="Name" />
         </View>
 
         <View style={styles.field}>
@@ -39,13 +48,12 @@ export const Login = () => {
         </View>
 
         <TouchableOpacity style={styles.button} activeOpacity={0.8}>
-          <Text style={styles.label}>log in</Text>
+          <Text style={styles.label}>sign up</Text>
         </TouchableOpacity>
 
         <View style={styles.question}>
           <Text style={styles.text}>
-            Don’t you have an account yet?{' '}
-            <Text style={styles.link}>Sign Up</Text>
+            Already have an account? <Text style={styles.link}>Log In</Text>
           </Text>
         </View>
       </View>
@@ -83,6 +91,11 @@ const styles = StyleSheet.create({
     height: 14,
     marginRight: 11,
   },
+  info: {
+    width: 20,
+    height: 20,
+    marginRight: 12,
+  },
   lock: {
     width: 16,
     height: 18,
@@ -97,7 +110,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: '#E8B0B6',
     height: 64,
-    marginTop: 133,
+    marginTop: 68,
     marginBottom: 32,
   },
   label: {

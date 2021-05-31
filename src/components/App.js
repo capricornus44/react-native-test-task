@@ -1,13 +1,15 @@
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
-import {Login} from './Login';
-import {Register} from './Register';
+import {LoginScreen} from './LoginScreen';
+import {RegisterScreen} from './RegisterScreen';
+// import {UserScreen} from './UserScreen';
 
 export const App = () => {
   return (
     <View style={styles.container}>
-      {/* <Login /> */}
-      <Register />
+      <LoginScreen />
+      {/* <RegisterScreen /> */}
+      {/* <UserScreen /> */}
     </View>
   );
 };
