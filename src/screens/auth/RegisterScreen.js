@@ -6,63 +6,108 @@ import {
   Image,
   TouchableOpacity,
   StyleSheet,
+  Platform,
+  KeyboardAvoidingView,
+  Keyboard,
+  TouchableWithoutFeedback,
 } from 'react-native';
 
+const initialState = {
+  email: '',
+  name: '',
+  password: '',
+};
+
 export const RegisterScreen = ({navigation}) => {
-  const [email, setEmail] = useState('');
-  const [name, setName] = useState('');
-  const [password, setPassword] = useState('');
+  const [state, setState] = useState(initialState);
+  const [isKeyboardShown, setIsKeyboardShown] = useState(false);
+
+  const keyboardHide = () => {
+    setIsKeyboardShown(false);
+    Keyboard.dismiss();
+    console.log(state);
+    setState(initialState);
+  };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.heading}>
-        <Text style={styles.title}>Create an Account</Text>
+    <TouchableWithoutFeedback onPress={keyboardHide}>
+      <View style={styles.container}>
+        <View style={{marginBottom: isKeyboardShown ? 70 : 150}}>
+          <Text style={styles.title}>Create an Account</Text>
+        </View>
+        <KeyboardAvoidingView
+          behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
+          <View style={styles.form}>
+            <View style={styles.field}>
+              <Image
+                style={styles.envelope}
+                source={require('../../assets/icons/envelope.png')}
+              />
+              <TextInput
+                style={styles.input}
+                value={state.email}
+                placeholder="Email"
+                onChangeText={value =>
+                  setState(prevState => ({...prevState, email: value}))
+                }
+                onFocus={() => setIsKeyboardShown(true)}
+              />
+            </View>
+
+            <View style={styles.field}>
+              <Image
+                style={styles.info}
+                source={require('../../assets/icons/info.png')}
+              />
+              <TextInput
+                style={styles.input}
+                value={state.name}
+                placeholder="Name"
+                onChangeText={value =>
+                  setState(prevState => ({...prevState, name: value}))
+                }
+                onFocus={() => setIsKeyboardShown(true)}
+              />
+            </View>
+
+            <View style={styles.field}>
+              <Image
+                style={styles.lock}
+                source={require('../../assets/icons/lock.png')}
+              />
+              <TextInput
+                style={styles.input}
+                value={state.password}
+                placeholder="Password"
+                secureTextEntry={true}
+                onChangeText={value =>
+                  setState(prevState => ({...prevState, password: value}))
+                }
+                onFocus={() => setIsKeyboardShown(true)}
+              />
+            </View>
+
+            <TouchableOpacity
+              style={{...styles.button, marginTop: isKeyboardShown ? 28 : 68}}
+              activeOpacity={0.8}
+              onPress={keyboardHide}>
+              <Text style={styles.label}>sign up</Text>
+            </TouchableOpacity>
+
+            <View style={styles.question}>
+              <Text style={styles.text}>
+                Already have an account?{' '}
+                <Text
+                  style={styles.link}
+                  onPress={() => navigation.navigate('Login')}>
+                  Log In
+                </Text>
+              </Text>
+            </View>
+          </View>
+        </KeyboardAvoidingView>
       </View>
-      <View style={styles.form}>
-        <View style={styles.field}>
-          <Image
-            style={styles.envelope}
-            source={require('../../assets/icons/envelope.png')}
-          />
-          <TextInput style={styles.input} value={email} placeholder="Email" />
-        </View>
-
-        <View style={styles.field}>
-          <Image
-            style={styles.info}
-            source={require('../../assets/icons/info.png')}
-          />
-          <TextInput style={styles.input} value={name} placeholder="Name" />
-        </View>
-
-        <View style={styles.field}>
-          <Image
-            style={styles.lock}
-            source={require('../../assets/icons/lock.png')}
-          />
-          <TextInput
-            style={styles.input}
-            value={password}
-            placeholder="Password"
-          />
-        </View>
-
-        <TouchableOpacity style={styles.button} activeOpacity={0.8}>
-          <Text style={styles.label}>sign up</Text>
-        </TouchableOpacity>
-
-        <View style={styles.question}>
-          <Text style={styles.text}>
-            Already have an account?{' '}
-            <Text
-              style={styles.link}
-              onPress={() => navigation.navigate('Login')}>
-              Log In
-            </Text>
-          </Text>
-        </View>
-      </View>
-    </View>
+    </TouchableWithoutFeedback>
   );
 };
 
@@ -71,9 +116,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     paddingHorizontal: 24,
-  },
-  heading: {
-    marginBottom: 150,
   },
   title: {
     textAlign: 'center',
@@ -115,7 +157,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: '#E8B0B6',
     height: 64,
-    marginTop: 68,
+    // marginTop: 68,
     marginBottom: 32,
   },
   label: {
