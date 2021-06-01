@@ -30,7 +30,7 @@ export const LoginScreen = ({navigation}) => {
   return (
     <TouchableWithoutFeedback onPress={keyboardHide}>
       <View style={styles.container}>
-        <View style={{marginBottom: isKeyboardShown ? 80 : 150}}>
+        <View style={{marginBottom: isKeyboardShown ? 70 : 150}}>
           <Text style={styles.title}>Welcome Back</Text>
         </View>
         <KeyboardAvoidingView
@@ -70,7 +70,7 @@ export const LoginScreen = ({navigation}) => {
             </View>
 
             <TouchableOpacity
-              style={{...styles.button, marginTop: isKeyboardShown ? 93 : 133}}
+              style={{...styles.button, marginTop: isKeyboardShown ? 73 : 133}}
               activeOpacity={0.8}
               onPress={keyboardHide}>
               <Text style={styles.label}>log in</Text>

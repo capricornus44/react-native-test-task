@@ -31,7 +31,7 @@ export const RegisterScreen = ({navigation}) => {
   return (
     <TouchableWithoutFeedback onPress={keyboardHide}>
       <View style={styles.container}>
-        <View style={{marginBottom: isKeyboardShown ? 70 : 150}}>
+        <View style={{marginBottom: isKeyboardShown ? 60 : 150}}>
           <Text style={styles.title}>Create an Account</Text>
         </View>
         <KeyboardAvoidingView
@@ -87,7 +87,7 @@ export const RegisterScreen = ({navigation}) => {
             </View>
 
             <TouchableOpacity
-              style={{...styles.button, marginTop: isKeyboardShown ? 28 : 68}}
+              style={{...styles.button, marginTop: isKeyboardShown ? 8 : 68}}
               activeOpacity={0.8}
               onPress={keyboardHide}>
               <Text style={styles.label}>sign up</Text>
