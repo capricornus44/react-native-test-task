@@ -1,11 +1,14 @@
 import 'react-native-gesture-handler';
 import React from 'react';
-import {NavigationContainer} from '@react-navigation/native';
+import {Provider} from 'react-redux';
 
-import {useRoute} from '../router';
+import {Main} from './Main';
+import {store} from '../redux/store';
 
 export const App = () => {
-  const routing = useRoute(true);
-
-  return <NavigationContainer>{routing}</NavigationContainer>;
+  return (
+    <Provider store={store}>
+      <Main />
+    </Provider>
+  );
 };

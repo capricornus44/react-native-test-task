@@ -1,7 +1,16 @@
 import React from 'react';
+import {useDispatch} from 'react-redux';
 import {View, Text, Image, TouchableOpacity, StyleSheet} from 'react-native';
 
+import {logOutUser} from '../redux/auth/authOperations';
+
 export const UserScreen = () => {
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    dispatch(logOutUser());
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.user}>
@@ -12,7 +21,10 @@ export const UserScreen = () => {
         <Text style={styles.name}>User name</Text>
       </View>
 
-      <TouchableOpacity style={styles.button} activeOpacity={0.8}>
+      <TouchableOpacity
+        style={styles.button}
+        activeOpacity={0.8}
+        onPress={handleLogout}>
         <Text style={styles.label}>logout</Text>
       </TouchableOpacity>
     </View>

@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {useDispatch} from 'react-redux';
 import {
   View,
   Text,
@@ -12,6 +13,8 @@ import {
   TouchableWithoutFeedback,
 } from 'react-native';
 
+import {signUpUser} from '../../redux/auth/authOperations';
+
 const initialState = {
   email: '',
   name: '',
@@ -21,11 +24,18 @@ const initialState = {
 export const RegisterScreen = ({navigation}) => {
   const [state, setState] = useState(initialState);
   const [isKeyboardShown, setIsKeyboardShown] = useState(false);
+  const dispatch = useDispatch();
+
+  const handleSubmit = () => {
+    setIsKeyboardShown(false);
+    Keyboard.dismiss();
+    dispatch(signUpUser(state));
+    setState(initialState);
+  };
 
   const keyboardHide = () => {
     setIsKeyboardShown(false);
     Keyboard.dismiss();
-    setState(initialState);
   };
 
   return (
@@ -89,7 +99,7 @@ export const RegisterScreen = ({navigation}) => {
             <TouchableOpacity
               style={{...styles.button, marginTop: isKeyboardShown ? 8 : 68}}
               activeOpacity={0.8}
-              onPress={keyboardHide}>
+              onPress={handleSubmit}>
               <Text style={styles.label}>sign up</Text>
             </TouchableOpacity>
 
@@ -128,6 +138,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'center',
     height: 40,
+    width: '100%',
     marginBottom: 40,
     borderBottomWidth: 1,
     borderBottomColor: 'rgba(163, 163, 163, 0.24)',
@@ -148,6 +159,7 @@ const styles = StyleSheet.create({
     marginRight: 13,
   },
   input: {
+    width: '100%',
     color: '#8a898e',
   },
   button: {
