@@ -24,6 +24,7 @@ export const LoginScreen = ({navigation}) => {
   const keyboardHide = () => {
     setIsKeyboardShown(false);
     Keyboard.dismiss();
+    setState(initialState);
   };
 
   return (

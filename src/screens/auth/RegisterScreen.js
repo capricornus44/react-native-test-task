@@ -25,7 +25,6 @@ export const RegisterScreen = ({navigation}) => {
   const keyboardHide = () => {
     setIsKeyboardShown(false);
     Keyboard.dismiss();
-    console.log(state);
     setState(initialState);
   };
 
