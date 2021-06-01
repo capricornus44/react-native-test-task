@@ -3,10 +3,8 @@ import {useSelector, useDispatch} from 'react-redux';
 import {NavigationContainer} from '@react-navigation/native';
 
 import {stateChangedUser} from '../redux/auth/authOperations';
-// import moduleName from 'react-native';
 
 import {useRoute} from '../router';
-import fb from '../../firebase/config';
 
 export const Main = () => {
   const {stateChange} = useSelector(state => state.auth);

@@ -168,7 +168,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     backgroundColor: '#E8B0B6',
     height: 64,
-    // marginTop: 68,
     marginBottom: 32,
   },
   label: {
