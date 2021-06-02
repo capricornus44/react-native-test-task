@@ -1,29 +1,25 @@
 import React from 'react';
-import {View, Text, Image, StyleSheet} from 'react-native';
+import {View, Text, Image, TouchableOpacity, StyleSheet} from 'react-native';
 
 export const MediaCard = ({song}) => {
   return (
-    <View
-      style={{
-        padding: 16,
-        justifyContent: 'center',
-        alignItems: 'flex-start',
-      }}>
-      <View style={styles.mediaPost}>
-        <Image
-          source={{uri: 'https://reactnative.dev/img/tiny_logo.png'}}
-          style={{width: 56, height: 56}}
-        />
-      </View>
+    <TouchableOpacity
+      activeOpacity={0.7}
+      style={styles.mediaCard}
+      onPress={() => navigation.navigate('Player')}>
+      <Image
+        source={{uri: 'https://reactnative.dev/img/tiny_logo.png'}}
+        style={styles.mediaPost}
+      />
+
       <View style={styles.mediaDescription}>
-        <Text style={styles.mediaSubtitle}>{song.subtitle}</Text>
-        <Text style={styles.mediaTitle}>{song.title}</Text>
-        <Text style={styles.mediaDuration}>{song.duration}</Text>
+        <Text style={styles.mediaSubtitle}>Subtitle</Text>
+        <Text style={styles.mediaTitle}>Title</Text>
+        <Text style={styles.mediaDuration}>7 min</Text>
       </View>
-      <TouchableOpacity activeOpacity={0.7} style={styles.play}>
-        <Image source={require('../assets/icons/play.png')} />
-      </TouchableOpacity>
-    </View>
+
+      <Image source={require('../assets/icons/play.png')} style={styles.play} />
+    </TouchableOpacity>
   );
 };
 
@@ -46,11 +42,12 @@ const styles = StyleSheet.create({
       height: 0,
     },
     shadowRadius: 22,
-
     elevation: 10,
   },
   mediaPost: {
     marginRight: 16,
+    width: 56,
+    height: 56,
   },
   mediaDescription: {},
   mediaSubtitle: {
@@ -58,12 +55,14 @@ const styles = StyleSheet.create({
     fontSize: 14,
     lineHeight: 16,
     color: '#8A898E',
+    textTransform: 'capitalize',
   },
   mediaTitle: {
     fontWeight: '500',
     fontSize: 16,
     lineHeight: 24,
     color: '#1B181C',
+    textTransform: 'capitalize',
   },
   mediaDuration: {
     fontWeight: '500',
