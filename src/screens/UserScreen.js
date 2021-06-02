@@ -3,6 +3,7 @@ import {useDispatch} from 'react-redux';
 import {View, Text, Image, TouchableOpacity, StyleSheet} from 'react-native';
 
 import {logOutUser} from '../redux/auth/authOperations';
+import LinearGradient from 'react-native-linear-gradient';
 
 export const UserScreen = () => {
   const dispatch = useDispatch();
@@ -25,7 +26,17 @@ export const UserScreen = () => {
         style={styles.button}
         activeOpacity={0.8}
         onPress={handleLogout}>
-        <Text style={styles.label}>logout</Text>
+        <LinearGradient
+          colors={['#E8B0B6', '#CC8389']}
+          useAngle={true}
+          angle={135}
+          style={{
+            height: 64,
+            justifyContent: 'center',
+            borderRadius: 10,
+          }}>
+          <Text style={styles.label}>logout</Text>
+        </LinearGradient>
       </TouchableOpacity>
     </View>
   );
@@ -76,13 +87,12 @@ const styles = StyleSheet.create({
   },
   button: {
     justifyContent: 'center',
-    alignItems: 'center',
     borderRadius: 10,
     backgroundColor: '#E8B0B6',
     height: 64,
   },
   label: {
-    fontFamily: 'Roboto-Bold',
+    textAlign: 'center',
     fontWeight: '700',
     fontSize: 18,
     lineHeight: 20,
