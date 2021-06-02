@@ -1,11 +1,11 @@
 import React from 'react';
 import {useDispatch} from 'react-redux';
 import {View, Text, Image, TouchableOpacity, StyleSheet} from 'react-native';
-
-import {logOutUser} from '../redux/auth/authOperations';
 import LinearGradient from 'react-native-linear-gradient';
 
-export const UserScreen = () => {
+import {logOutUser} from '../../redux/auth/authOperations';
+
+export const ProfileScreen = () => {
   const dispatch = useDispatch();
 
   const handleLogout = () => {
@@ -17,7 +17,7 @@ export const UserScreen = () => {
       <View style={styles.user}>
         <Image
           style={styles.avatar}
-          source={require('../assets/images/avatar.png')}
+          source={require('../../assets/images/avatar.png')}
         />
         <Text style={styles.name}>User name</Text>
       </View>
@@ -47,8 +47,9 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'space-between',
     paddingTop: 76,
-    paddingBottom: 169,
+    paddingBottom: 70,
     paddingHorizontal: 24,
+    backgroundColor: '#ffffff',
   },
   user: {
     position: 'relative',
@@ -76,7 +77,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#ffffff',
 
     shadowColor: '#000',
-    shadowOpacity: 0.1,
+    shadowOpacity: 0.14,
     shadowOffset: {
       width: 0,
       height: 0,

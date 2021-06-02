@@ -1,4 +1,5 @@
 import fb from '../../../firebase/config';
+import firestore from '@react-native-firebase/firestore';
 import {authSlice} from './authReducer';
 
 const {authSignOut, updateUserInfo, authStateChahge} = authSlice.actions;
@@ -10,7 +11,6 @@ const signUpUser =
       await fb.auth().createUserWithEmailAndPassword(email, password);
 
       const user = await fb.auth().currentUser;
-      console.log(user);
 
       await user.updateUserInfo({
         displayName: name,
@@ -22,6 +22,8 @@ const signUpUser =
         name: displayName,
         userId: uid,
       };
+
+      firestore().collection('users').add(userInfo);
 
       dispatch(updateUserInfo(userInfo));
     } catch (error) {
