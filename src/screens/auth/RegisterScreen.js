@@ -12,6 +12,7 @@ import {
   Keyboard,
   TouchableWithoutFeedback,
 } from 'react-native';
+import LinearGradient from 'react-native-linear-gradient';
 
 import {signUpUser} from '../../redux/auth/authOperations';
 
@@ -40,7 +41,11 @@ export const RegisterScreen = ({navigation}) => {
 
   return (
     <TouchableWithoutFeedback onPress={keyboardHide}>
-      <View style={styles.container}>
+      <LinearGradient
+        colors={['#ffffff', '#ede8e4']}
+        useAngle={true}
+        angle={135}
+        style={styles.container}>
         <View style={{marginBottom: isKeyboardShown ? 60 : 150}}>
           <Text style={styles.title}>Create an Account</Text>
         </View>
@@ -115,7 +120,7 @@ export const RegisterScreen = ({navigation}) => {
             </View>
           </View>
         </KeyboardAvoidingView>
-      </View>
+      </LinearGradient>
     </TouchableWithoutFeedback>
   );
 };
