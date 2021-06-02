@@ -2,25 +2,31 @@ import React from 'react';
 import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
 import Video from 'react-native-video';
 
-export const PlayerScreen = () => {
+export const PlayerScreen = ({navigation}) => {
   return (
     <View style={styles.modal}>
       <TouchableOpacity
         activeOpacity={0.7}
-        style={styles.play}
+        style={styles.close}
         onPress={() => navigation.navigate('Library')}>
         <Image source={require('../../assets/icons/close.png')} />
       </TouchableOpacity>
+      <Text style={styles.subtitle}>Subtitle</Text>
+      <Text style={styles.title}>Title</Text>
+      <Text style={styles.duration}>6:59</Text>
 
-      <Video
-        source={{uri: 'background'}} // Can be a URL or a local file.
-        ref={ref => {
-          this.player = ref;
-        }} // Store reference
-        onBuffer={this.onBuffer} // Callback when remote video is buffering
-        onError={this.videoError} // Callback when video cannot be loaded
+      {/* <Video
+        controls
+        source={require('../../assets/mp3/niletto.mp3')}
+        // source={require('../../assets/mp3/2.mp4')}
+
+        // ref={ref => {
+        //   this.player = ref;
+        // }}
+        // onBuffer={this.onBuffer}
+        // onError={this.videoError}
         style={styles.backgroundVideo}
-      />
+      /> */}
     </View>
   );
 };
@@ -28,15 +34,45 @@ export const PlayerScreen = () => {
 const styles = StyleSheet.create({
   modal: {
     flex: 1,
-    backgroundColor: 'grey',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
+    paddingHorizontal: 24,
+    paddingTop: '10%',
+    backgroundColor: 'rgba(82, 55, 45, 0.8)',
+  },
+  close: {
+    alignSelf: 'flex-start',
+    marginBottom: 36,
+  },
+  subtitle: {
+    marginBottom: 8,
+    fontWeight: '400',
+    fontSize: 14,
+    lineHeight: 16,
+    color: '#ffffff',
+    opacity: 0.6,
+  },
+  title: {
+    fontWeight: '400',
+    fontSize: 24,
+    lineHeight: 32,
+    color: '#ffffff',
+  },
+  duration: {
+    marginTop: 'auto',
+    marginBottom: 'auto',
+    fontFamily: 'SFProText',
+    fontSize: 80,
+    lineHeight: 94,
+    color: '#ffffff',
   },
   backgroundVideo: {
     position: 'absolute',
-    top: 0,
-    left: 0,
     bottom: 0,
-    right: 0,
+    height: 90,
+    width: '100%',
+    borderColor: 'red',
+    borderWidth: 1,
+    borderStyle: 'solid',
   },
 });

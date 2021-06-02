@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {
   View,
   Text,
@@ -13,9 +13,6 @@ import moment from 'moment';
 import MediaCard from '../../components/MediaCard';
 
 export const LibraryScreen = ({navigation}) => {
-  const [songs, setSongs] = useState([]);
-  const [modalActive, setModalActive] = useState(false);
-
   const dayOfWeek = moment().format('dddd').slice(0, 3);
   const currentDate = moment().format('DD MMM');
 
@@ -32,31 +29,32 @@ export const LibraryScreen = ({navigation}) => {
           </Text>
           <Text style={styles.slogan}>Let’s work on your intention</Text>
           <Image
-            style={styles.statusImg}
-            source={require('../../assets/images/status.png')}
+            style={styles.anchor}
+            source={require('../../assets/images/anchor.png')}
           />
         </LinearGradient>
       </View>
       <View style={styles.lowerContainer}>
-        <View style={styles.mediaCard}>
-          <View style={styles.mediaPost}>
-            <Image
-              source={{uri: 'https://reactnative.dev/img/tiny_logo.png'}}
-              style={{width: 56, height: 56}}
-            />
-          </View>
+        <TouchableOpacity
+          activeOpacity={0.7}
+          style={styles.mediaCard}
+          onPress={() => navigation.navigate('Player')}>
+          <Image
+            source={{uri: 'https://reactnative.dev/img/tiny_logo.png'}}
+            style={styles.mediaPost}
+          />
+
           <View style={styles.mediaDescription}>
-            <Text style={styles.mediaSubtitle}>Subtitle1</Text>
+            <Text style={styles.mediaSubtitle}>Subtitle</Text>
             <Text style={styles.mediaTitle}>Title</Text>
             <Text style={styles.mediaDuration}>7 min</Text>
           </View>
-          <TouchableOpacity
-            activeOpacity={0.7}
+
+          <Image
+            source={require('../../assets/icons/play.png')}
             style={styles.play}
-            onPress={() => navigation.navigate('Player')}>
-            <Image source={require('../../assets/icons/play.png')} />
-          </TouchableOpacity>
-        </View>
+          />
+        </TouchableOpacity>
 
         {/* <FlatList
           keyExtractor={item => item.id}
@@ -89,7 +87,7 @@ const styles = StyleSheet.create({
     lineHeight: 26,
     color: '#1B181C',
   },
-  statusImg: {
+  anchor: {
     alignSelf: 'center',
     marginTop: 'auto',
     marginBottom: 'auto',
@@ -98,6 +96,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     height: '25%',
     paddingHorizontal: 24,
+    alignItems: 'center',
     backgroundColor: '#ffffff',
   },
   mediaCard: {
@@ -122,6 +121,8 @@ const styles = StyleSheet.create({
   },
   mediaPost: {
     marginRight: 16,
+    width: 56,
+    height: 56,
   },
   mediaDescription: {},
   mediaSubtitle: {

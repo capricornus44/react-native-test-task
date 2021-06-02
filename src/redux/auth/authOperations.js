@@ -1,5 +1,6 @@
 import fb from '../../../firebase/config';
 import firestore from '@react-native-firebase/firestore';
+
 import {authSlice} from './authReducer';
 
 const {authSignOut, updateUserInfo, authStateChahge} = authSlice.actions;

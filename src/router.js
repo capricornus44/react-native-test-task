@@ -7,6 +7,7 @@ import {LoginScreen} from './screens/auth/LoginScreen';
 import {RegisterScreen} from './screens/auth/RegisterScreen';
 import {ProfileScreen} from './screens/main/ProfileScreen';
 import {LibraryScreen} from './screens/main/LibraryScreen';
+import {PlayerScreen} from './screens/main/PlayerScreen';
 
 const AuthStack = createStackNavigator();
 const MainTab = createBottomTabNavigator();
@@ -59,6 +60,7 @@ export const useRoute = isAuth => {
         name="Profile"
         component={ProfileScreen}
       />
+      <MainTab.Screen name="Player" component={PlayerScreen} />
     </MainTab.Navigator>
   );
 };
