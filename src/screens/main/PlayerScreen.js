@@ -25,9 +25,8 @@ export const PlayerScreen = ({setShowModal, showModal}) => {
 
         <Video
           controls
-          source={require('../../assets/mp3/niletto.mp3')}
-          // source={require('../../assets/mp3/2.mp4')}
-
+          // source={require('../../assets/mp3/niletto.mp3')}
+          source={require('../../assets/mp3/2.mp4')}
           // ref={ref => {
           //   this.player = ref;
           // }}
@@ -76,9 +75,9 @@ const styles = StyleSheet.create({
     color: '#ffffff',
   },
   backgroundVideo: {
-    position: 'absolute',
-    bottom: 0,
-    height: 90,
+    // position: 'absolute',
+    // bottom: 0,
+    height: 150,
     width: '100%',
     borderColor: 'red',
     borderWidth: 1,

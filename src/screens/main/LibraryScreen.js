@@ -23,7 +23,7 @@ export const LibraryScreen = ({navigation}) => {
       title: 'title1',
       duration: '7 min',
       mediaURL: '',
-      imageURL: '',
+      imageURL: 'http://picsum.photos/id/1/200',
     },
     {
       id: 2,
@@ -31,7 +31,7 @@ export const LibraryScreen = ({navigation}) => {
       title: 'title2',
       duration: '6 min',
       mediaURL: '',
-      imageURL: '',
+      imageURL: 'http://picsum.photos/id/10/200',
     },
     {
       id: 3,
@@ -39,7 +39,23 @@ export const LibraryScreen = ({navigation}) => {
       title: 'title3',
       duration: '13 min',
       mediaURL: '',
-      imageURL: '',
+      imageURL: 'http://picsum.photos/id/1002/200',
+    },
+    {
+      id: 4,
+      subtitle: 'subtitle4',
+      title: 'title4',
+      duration: '13 min',
+      mediaURL: '',
+      imageURL: 'http://picsum.photos/id/1002/200',
+    },
+    {
+      id: 5,
+      subtitle: 'subtitle5',
+      title: 'title5',
+      duration: '13 min',
+      mediaURL: '',
+      imageURL: 'http://picsum.photos/id/1002/200',
     },
   ]);
 
@@ -69,7 +85,8 @@ export const LibraryScreen = ({navigation}) => {
         <FlatList
           keyExtractor={item => item.id}
           data={media}
-          horizontal
+          horizontal={true}
+          showsHorizontalScrollIndicator={false}
           renderItem={({item}) => (
             <TouchableOpacity
               activeOpacity={0.7}
@@ -127,10 +144,10 @@ const styles = StyleSheet.create({
     marginBottom: 'auto',
   },
   lowerContainer: {
-    flexDirection: 'row',
+    flex: 1,
     height: '25%',
     paddingHorizontal: 24,
-    paddingTop: 10,
+    paddingVertical: 10,
     backgroundColor: '#ffffff',
   },
   mediaCard: {
@@ -138,9 +155,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     padding: 16,
-    // marginRight: 12,
+    marginRight: 12,
+    marginBottom: 5,
     height: 88,
-    width: '80%',
+    width: 320,
     borderRadius: 10,
     backgroundColor: '#ffffff',
 
