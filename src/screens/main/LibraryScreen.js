@@ -6,7 +6,7 @@ import moment from 'moment';
 import {PlayerScreen} from './PlayerScreen';
 import {MediaCard} from '../../components/MediaCard';
 
-export const LibraryScreen = ({navigation}) => {
+export const LibraryScreen = ({}) => {
   const [showModal, setShowModal] = useState(false);
 
   const [media, setMedia] = useState([

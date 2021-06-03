@@ -15,16 +15,14 @@ const signUpUser =
 
       await user.updateUserInfo({
         displayName: name,
+        uid: userId,
       });
 
       const {uid, displayName} = await fb.auth().currentUser;
 
       const userInfo = {
         name: displayName,
-        userId: uid,
       };
-
-      firestore().collection('users').add(userInfo);
 
       dispatch(updateUserInfo(userInfo));
     } catch (error) {

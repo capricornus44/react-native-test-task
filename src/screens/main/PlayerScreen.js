@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
@@ -7,9 +7,16 @@ import {
   TouchableOpacity,
   Modal,
 } from 'react-native';
+import Slider from '@react-native-community/slider';
 import Video from 'react-native-video';
 
+import {AlertMessage} from '../../components/AlertMessage';
+
+const testVideo = require('../../assets/mp3/2.mp4');
+
 export const PlayerScreen = ({setShowModal, showModal}) => {
+  const [showAlert, setShowAlert] = useState(false);
+
   return (
     <Modal visible={showModal} animationType="slide">
       <View style={styles.modalComponents}>
@@ -23,17 +30,54 @@ export const PlayerScreen = ({setShowModal, showModal}) => {
         <Text style={styles.title}>Title</Text>
         <Text style={styles.duration}>6:59</Text>
 
-        <Video
+        {showAlert && (
+          <AlertMessage
+            setShowModal={setShowModal}
+            setShowAlert={setShowAlert}
+          />
+        )}
+
+        <View style={styles.controlContainer}>
+          <View style={styles.sliderContainer}>
+            <Slider
+              style={{height: 40}}
+              minimumValue={0}
+              maximumValue={1}
+              minimumTrackTintColor="#FFFFFF"
+              maximumTrackTintColor="#FFFFFF"
+              thumbTintColor="#FFFFFF"
+            />
+          </View>
+          <View style={styles.controlButtons}>
+            <TouchableOpacity activeOpacity={0.7}>
+              <Image
+                style={styles.backward}
+                source={require('../../assets/icons/back.png')}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity
+              activeOpacity={0.7}
+              onPress={() => setShowAlert(true)}>
+              <Image
+                style={styles.pause}
+                source={require('../../assets/icons/stop.png')}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity activeOpacity={0.7}>
+              <Image
+                style={styles.forward}
+                source={require('../../assets/icons/fwd.png')}
+              />
+            </TouchableOpacity>
+          </View>
+        </View>
+
+        {/* <Video
           controls
           // source={require('../../assets/mp3/niletto.mp3')}
           source={require('../../assets/mp3/2.mp4')}
-          // ref={ref => {
-          //   this.player = ref;
-          // }}
-          // onBuffer={this.onBuffer}
-          // onError={this.videoError}
           style={styles.backgroundVideo}
-        />
+        /> */}
       </View>
     </Modal>
   );
@@ -45,7 +89,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'flex-start',
     paddingHorizontal: 24,
-    paddingTop: '10%',
+    paddingVertical: '10%',
     backgroundColor: 'rgba(82, 55, 45, 0.8)',
   },
   close: {
@@ -74,6 +118,17 @@ const styles = StyleSheet.create({
     lineHeight: 94,
     color: '#ffffff',
   },
+  sliderContainer: {
+    justifyContent: 'center',
+  },
+  controlButtons: {
+    flexDirection: 'row',
+    width: '100%',
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
+    marginTop: 30,
+  },
+
   backgroundVideo: {
     // position: 'absolute',
     // bottom: 0,
