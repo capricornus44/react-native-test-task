@@ -1,5 +1,12 @@
 import React, {useState} from 'react';
-import {View, Text, Image, StyleSheet, FlatList} from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  FlatList,
+  ImageBackground,
+} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import moment from 'moment';
 
@@ -58,7 +65,24 @@ export const LibraryScreen = ({}) => {
   return (
     <>
       <View style={styles.upperContainer}>
-        <LinearGradient
+        <ImageBackground
+          style={{
+            resizeMode: 'cover',
+            flex: 1,
+            paddingTop: '10%',
+            paddingHorizontal: 24,
+          }}
+          source={require('../../assets/images/bg.png')}>
+          <Text style={styles.date}>
+            {dayOfWeek} {currentDate}
+          </Text>
+          <Text style={styles.slogan}>Let’s work on your intention</Text>
+          <Image
+            style={styles.anchor}
+            source={require('../../assets/images/anchor.png')}
+          />
+        </ImageBackground>
+        {/* <LinearGradient
           style={styles.linearGradient}
           colors={['#FAFAFA', '#E3E1E6']}
           useAngle={true}
@@ -71,7 +95,7 @@ export const LibraryScreen = ({}) => {
             style={styles.anchor}
             source={require('../../assets/images/anchor.png')}
           />
-        </LinearGradient>
+        </LinearGradient> */}
       </View>
 
       <View style={styles.lowerContainer}>
@@ -94,7 +118,7 @@ export const LibraryScreen = ({}) => {
 const styles = StyleSheet.create({
   upperContainer: {
     height: '75%',
-    backgroundColor: '#ffffff',
+    backgroundColor: '#fafafa',
   },
   linearGradient: {
     flex: 1,
@@ -122,7 +146,7 @@ const styles = StyleSheet.create({
     flex: 1,
     height: '25%',
     paddingHorizontal: 24,
-    paddingVertical: 10,
-    backgroundColor: '#ffffff',
+    // paddingVertical: 10,
+    backgroundColor: '#fafafa',
   },
 });
