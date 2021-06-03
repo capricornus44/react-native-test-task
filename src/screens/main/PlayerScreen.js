@@ -1,21 +1,29 @@
 import React from 'react';
-import {View, Text, Image, StyleSheet, TouchableOpacity} from 'react-native';
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+  Modal,
+} from 'react-native';
 import Video from 'react-native-video';
 
-export const PlayerScreen = ({navigation}) => {
+export const PlayerScreen = ({setShowModal, showModal}) => {
   return (
-    <View style={styles.modal}>
-      <TouchableOpacity
-        activeOpacity={0.7}
-        style={styles.close}
-        onPress={() => navigation.navigate('Library')}>
-        <Image source={require('../../assets/icons/close.png')} />
-      </TouchableOpacity>
-      <Text style={styles.subtitle}>Subtitle</Text>
-      <Text style={styles.title}>Title</Text>
-      <Text style={styles.duration}>6:59</Text>
+    <Modal visible={showModal} animationType="slide">
+      <View style={styles.modalComponents}>
+        <TouchableOpacity
+          activeOpacity={0.7}
+          style={styles.close}
+          onPress={() => setShowModal(false)}>
+          <Image source={require('../../assets/icons/close.png')} />
+        </TouchableOpacity>
+        <Text style={styles.subtitle}>Subtitle</Text>
+        <Text style={styles.title}>Title</Text>
+        <Text style={styles.duration}>6:59</Text>
 
-      {/* <Video
+        {/* <Video
         controls
         source={require('../../assets/mp3/niletto.mp3')}
         // source={require('../../assets/mp3/2.mp4')}
@@ -27,12 +35,13 @@ export const PlayerScreen = ({navigation}) => {
         // onError={this.videoError}
         style={styles.backgroundVideo}
       /> */}
-    </View>
+      </View>
+    </Modal>
   );
 };
 
 const styles = StyleSheet.create({
-  modal: {
+  modalComponents: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'flex-start',

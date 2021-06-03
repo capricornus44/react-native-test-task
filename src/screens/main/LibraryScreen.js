@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
@@ -11,8 +11,11 @@ import LinearGradient from 'react-native-linear-gradient';
 import moment from 'moment';
 
 import MediaCard from '../../components/MediaCard';
+import {PlayerScreen} from './PlayerScreen';
 
 export const LibraryScreen = ({navigation}) => {
+  const [showModal, setShowModal] = useState(false);
+
   const dayOfWeek = moment().format('dddd').slice(0, 3);
   const currentDate = moment().format('DD MMM');
 
@@ -34,11 +37,12 @@ export const LibraryScreen = ({navigation}) => {
           />
         </LinearGradient>
       </View>
+
       <View style={styles.lowerContainer}>
         <TouchableOpacity
           activeOpacity={0.7}
           style={styles.mediaCard}
-          onPress={() => navigation.navigate('Player')}>
+          onPress={() => setShowModal(true)}>
           <Image
             source={{uri: 'https://reactnative.dev/img/tiny_logo.png'}}
             style={styles.mediaPost}
@@ -62,6 +66,8 @@ export const LibraryScreen = ({navigation}) => {
           renderItem={({item}) => <MediaCard song={item} />}
         /> */}
       </View>
+
+      <PlayerScreen setShowModal={setShowModal} showModal={showModal} />
     </>
   );
 };
