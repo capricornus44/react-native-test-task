@@ -30,5 +30,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     lineHeight: 24,
     color: '#ffffff',
+    textTransform: 'capitalize',
   },
 });

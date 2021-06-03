@@ -92,13 +92,14 @@ export const LibraryScreen = ({}) => {
 };
 
 const styles = StyleSheet.create({
+  upperContainer: {
+    height: '75%',
+    backgroundColor: '#ffffff',
+  },
   linearGradient: {
     flex: 1,
     paddingTop: '10%',
     paddingHorizontal: 24,
-  },
-  upperContainer: {
-    height: '75%',
   },
   date: {
     fontWeight: '500',
