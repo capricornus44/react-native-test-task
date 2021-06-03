@@ -1,12 +1,12 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {View, Text, Image, TouchableOpacity, StyleSheet} from 'react-native';
 
-export const MediaCard = ({song}) => {
+export const MediaCard = ({item, setShowModal}) => {
   return (
     <TouchableOpacity
       activeOpacity={0.7}
       style={styles.mediaCard}
-      onPress={() => navigation.navigate('Player')}>
+      onPress={() => setShowModal(true)}>
       <Image
         source={{uri: 'https://reactnative.dev/img/tiny_logo.png'}}
         style={styles.mediaPost}

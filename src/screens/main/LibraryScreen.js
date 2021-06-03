@@ -16,6 +16,33 @@ import {PlayerScreen} from './PlayerScreen';
 export const LibraryScreen = ({navigation}) => {
   const [showModal, setShowModal] = useState(false);
 
+  const [media, setMedia] = useState([
+    {
+      id: 1,
+      subtitle: 'subtitle1',
+      title: 'title1',
+      duration: '7 min',
+      mediaURL: '',
+      imageURL: '',
+    },
+    {
+      id: 2,
+      subtitle: 'subtitle2',
+      title: 'title2',
+      duration: '6 min',
+      mediaURL: '',
+      imageURL: '',
+    },
+    {
+      id: 3,
+      subtitle: 'subtitle3',
+      title: 'title3',
+      duration: '13 min',
+      mediaURL: '',
+      imageURL: '',
+    },
+  ]);
+
   const dayOfWeek = moment().format('dddd').slice(0, 3);
   const currentDate = moment().format('DD MMM');
 
@@ -39,32 +66,33 @@ export const LibraryScreen = ({navigation}) => {
       </View>
 
       <View style={styles.lowerContainer}>
-        <TouchableOpacity
-          activeOpacity={0.7}
-          style={styles.mediaCard}
-          onPress={() => setShowModal(true)}>
-          <Image
-            source={{uri: 'https://reactnative.dev/img/tiny_logo.png'}}
-            style={styles.mediaPost}
-          />
-
-          <View style={styles.mediaDescription}>
-            <Text style={styles.mediaSubtitle}>Subtitle</Text>
-            <Text style={styles.mediaTitle}>Title</Text>
-            <Text style={styles.mediaDuration}>7 min</Text>
-          </View>
-
-          <Image
-            source={require('../../assets/icons/play.png')}
-            style={styles.play}
-          />
-        </TouchableOpacity>
-
-        {/* <FlatList
+        <FlatList
           keyExtractor={item => item.id}
-          data={songs}
-          renderItem={({item}) => <MediaCard song={item} />}
-        /> */}
+          data={media}
+          horizontal
+          renderItem={({item}) => (
+            <TouchableOpacity
+              activeOpacity={0.7}
+              style={styles.mediaCard}
+              onPress={() => setShowModal(true)}>
+              <Image
+                source={{uri: 'https://reactnative.dev/img/tiny_logo.png'}}
+                style={styles.mediaPost}
+              />
+
+              <View style={styles.mediaDescription}>
+                <Text style={styles.mediaSubtitle}>{item.subtitle}</Text>
+                <Text style={styles.mediaTitle}>{item.title}</Text>
+                <Text style={styles.mediaDuration}>{item.duration}</Text>
+              </View>
+
+              <Image
+                source={require('../../assets/icons/play.png')}
+                style={styles.play}
+              />
+            </TouchableOpacity>
+          )}
+        />
       </View>
 
       <PlayerScreen setShowModal={setShowModal} showModal={showModal} />
@@ -102,17 +130,17 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     height: '25%',
     paddingHorizontal: 24,
-    alignItems: 'center',
+    paddingTop: 10,
     backgroundColor: '#ffffff',
   },
   mediaCard: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'flex-start',
+    justifyContent: 'center',
     padding: 16,
-    marginRight: 12,
+    // marginRight: 12,
     height: 88,
-    width: '100%',
+    width: '80%',
     borderRadius: 10,
     backgroundColor: '#ffffff',
 

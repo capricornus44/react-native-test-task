@@ -23,18 +23,18 @@ export const PlayerScreen = ({setShowModal, showModal}) => {
         <Text style={styles.title}>Title</Text>
         <Text style={styles.duration}>6:59</Text>
 
-        {/* <Video
-        controls
-        source={require('../../assets/mp3/niletto.mp3')}
-        // source={require('../../assets/mp3/2.mp4')}
+        <Video
+          controls
+          source={require('../../assets/mp3/niletto.mp3')}
+          // source={require('../../assets/mp3/2.mp4')}
 
-        // ref={ref => {
-        //   this.player = ref;
-        // }}
-        // onBuffer={this.onBuffer}
-        // onError={this.videoError}
-        style={styles.backgroundVideo}
-      /> */}
+          // ref={ref => {
+          //   this.player = ref;
+          // }}
+          // onBuffer={this.onBuffer}
+          // onError={this.videoError}
+          style={styles.backgroundVideo}
+        />
       </View>
     </Modal>
   );
