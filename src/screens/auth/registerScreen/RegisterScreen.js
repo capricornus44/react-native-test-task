@@ -6,7 +6,6 @@ import {
   TextInput,
   Image,
   TouchableOpacity,
-  StyleSheet,
   Platform,
   KeyboardAvoidingView,
   Keyboard,
@@ -14,7 +13,8 @@ import {
 } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
-import {signUpUser} from '../../redux/auth/authOperations';
+import {signUpUser} from '../../../redux/auth/authOperations';
+import StyleSheet from './styles';
 
 const initialState = {
   email: '',
@@ -45,20 +45,20 @@ export const RegisterScreen = ({navigation}) => {
         colors={['#ffffff', '#ede8e4']}
         useAngle={true}
         angle={135}
-        style={styles.container}>
+        style={StyleSheet.container}>
         <View style={{marginBottom: isKeyboardShown ? 60 : 150}}>
-          <Text style={styles.title}>Create an Account</Text>
+          <Text style={StyleSheet.title}>Create an Account</Text>
         </View>
         <KeyboardAvoidingView
           behavior={Platform.OS === 'ios' ? 'padding' : 'height'}>
-          <View style={styles.form}>
-            <View style={styles.field}>
+          <View style={StyleSheet.form}>
+            <View style={StyleSheet.field}>
               <Image
-                style={styles.envelope}
-                source={require('../../assets/icons/envelope.png')}
+                style={StyleSheet.envelope}
+                source={require('../../../assets/icons/envelope.png')}
               />
               <TextInput
-                style={styles.input}
+                style={StyleSheet.input}
                 value={state.email}
                 placeholder="Email"
                 onChangeText={value =>
@@ -68,13 +68,13 @@ export const RegisterScreen = ({navigation}) => {
               />
             </View>
 
-            <View style={styles.field}>
+            <View style={StyleSheet.field}>
               <Image
-                style={styles.info}
-                source={require('../../assets/icons/info.png')}
+                style={StyleSheet.info}
+                source={require('../../../assets/icons/info.png')}
               />
               <TextInput
-                style={styles.input}
+                style={StyleSheet.input}
                 value={state.name}
                 placeholder="Name"
                 onChangeText={value =>
@@ -84,13 +84,13 @@ export const RegisterScreen = ({navigation}) => {
               />
             </View>
 
-            <View style={styles.field}>
+            <View style={StyleSheet.field}>
               <Image
-                style={styles.lock}
-                source={require('../../assets/icons/lock.png')}
+                style={StyleSheet.lock}
+                source={require('../../../assets/icons/lock.png')}
               />
               <TextInput
-                style={styles.input}
+                style={StyleSheet.input}
                 value={state.password}
                 placeholder="Password"
                 secureTextEntry={true}
@@ -102,27 +102,26 @@ export const RegisterScreen = ({navigation}) => {
             </View>
 
             <TouchableOpacity
-              style={{...styles.button, marginTop: isKeyboardShown ? 8 : 68}}
+              style={{
+                ...StyleSheet.button,
+                marginTop: isKeyboardShown ? 8 : 68,
+              }}
               activeOpacity={0.8}
               onPress={handleSubmit}>
               <LinearGradient
                 colors={['#E8B0B6', '#CC8389']}
                 useAngle={true}
                 angle={135}
-                style={{
-                  height: 64,
-                  justifyContent: 'center',
-                  borderRadius: 10,
-                }}>
-                <Text style={styles.label}>sign up</Text>
+                style={StyleSheet.linearGradient}>
+                <Text style={StyleSheet.label}>sign up</Text>
               </LinearGradient>
             </TouchableOpacity>
 
-            <View style={styles.question}>
-              <Text style={styles.text}>
+            <View style={StyleSheet.question}>
+              <Text style={StyleSheet.text}>
                 Already have an account?{' '}
                 <Text
-                  style={styles.link}
+                  style={StyleSheet.link}
                   onPress={() => navigation.navigate('Login')}>
                   Log In
                 </Text>
@@ -134,75 +133,3 @@ export const RegisterScreen = ({navigation}) => {
     </TouchableWithoutFeedback>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    paddingHorizontal: 24,
-  },
-  title: {
-    textAlign: 'center',
-    fontSize: 22,
-    fontWeight: '500',
-    lineHeight: 26,
-    color: '#1B181C',
-  },
-  field: {
-    flexDirection: 'row',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
-    height: 40,
-    width: '100%',
-    marginBottom: 40,
-    borderBottomWidth: 1,
-    borderBottomColor: 'rgba(163, 163, 163, 0.24)',
-  },
-  envelope: {
-    width: 19,
-    height: 14,
-    marginRight: 11,
-  },
-  info: {
-    width: 20,
-    height: 20,
-    marginRight: 12,
-  },
-  lock: {
-    width: 16,
-    height: 18,
-    marginRight: 13,
-  },
-  input: {
-    width: '100%',
-    color: '#8a898e',
-  },
-  button: {
-    justifyContent: 'center',
-    borderRadius: 10,
-    backgroundColor: '#E8B0B6',
-    height: 64,
-    marginBottom: 32,
-  },
-  label: {
-    textAlign: 'center',
-    fontWeight: '700',
-    fontSize: 18,
-    lineHeight: 20,
-    color: '#ffffff',
-    textTransform: 'capitalize',
-  },
-  question: {
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  text: {
-    fontWeight: '500',
-    fontSize: 14,
-    lineHeight: 20,
-    color: '#8A898E',
-  },
-  link: {
-    textDecorationLine: 'underline',
-  },
-});

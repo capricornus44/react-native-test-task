@@ -3,10 +3,10 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {Image} from 'react-native';
 
-import {LoginScreen} from './screens/auth/LoginScreen';
-import {RegisterScreen} from './screens/auth/RegisterScreen';
-import {ProfileScreen} from './screens/main/ProfileScreen';
-import {LibraryScreen} from './screens/main/LibraryScreen';
+import {LoginScreen} from '../screens/auth/loginScreen/LoginScreen';
+import {RegisterScreen} from '../screens/auth/registerScreen/RegisterScreen';
+import {ProfileScreen} from '../screens/main/profileScreen/ProfileScreen';
+import {LibraryScreen} from '../screens/main/libraryScreen/LibraryScreen';
 
 const AuthStack = createStackNavigator();
 

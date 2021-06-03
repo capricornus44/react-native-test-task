@@ -1,26 +1,7 @@
 import React from 'react';
-import {View, Text, Image, TouchableOpacity, StyleSheet} from 'react-native';
+import {StyleSheet} from 'react-native';
 
-export const MediaCard = ({item, setShowModal}) => {
-  return (
-    <TouchableOpacity
-      activeOpacity={0.7}
-      style={styles.mediaCard}
-      onPress={() => setShowModal(true)}>
-      <Image source={{uri: item.imageURL}} style={styles.mediaPost} />
-
-      <View style={styles.mediaDescription}>
-        <Text style={styles.mediaSubtitle}>{item.subtitle}</Text>
-        <Text style={styles.mediaTitle}>{item.title}</Text>
-        <Text style={styles.mediaDuration}>{item.duration}</Text>
-      </View>
-
-      <Image source={require('../assets/icons/play.png')} style={styles.play} />
-    </TouchableOpacity>
-  );
-};
-
-const styles = StyleSheet.create({
+export default StyleSheet.create({
   mediaCard: {
     flexDirection: 'row',
     alignItems: 'center',
