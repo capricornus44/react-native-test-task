@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {View, Text, Image, TouchableOpacity, StyleSheet} from 'react-native';
 
 export const MediaCard = ({item, setShowModal}) => {
@@ -7,15 +7,12 @@ export const MediaCard = ({item, setShowModal}) => {
       activeOpacity={0.7}
       style={styles.mediaCard}
       onPress={() => setShowModal(true)}>
-      <Image
-        source={{uri: 'https://reactnative.dev/img/tiny_logo.png'}}
-        style={styles.mediaPost}
-      />
+      <Image source={{uri: item.imageURL}} style={styles.mediaPost} />
 
       <View style={styles.mediaDescription}>
-        <Text style={styles.mediaSubtitle}>Subtitle</Text>
-        <Text style={styles.mediaTitle}>Title</Text>
-        <Text style={styles.mediaDuration}>7 min</Text>
+        <Text style={styles.mediaSubtitle}>{item.subtitle}</Text>
+        <Text style={styles.mediaTitle}>{item.title}</Text>
+        <Text style={styles.mediaDuration}>{item.duration}</Text>
       </View>
 
       <Image source={require('../assets/icons/play.png')} style={styles.play} />
@@ -27,11 +24,12 @@ const styles = StyleSheet.create({
   mediaCard: {
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'flex-start',
+    justifyContent: 'center',
     padding: 16,
     marginRight: 12,
     height: 88,
-    width: '100%',
+    width: 320,
+    // width: '60%',
     borderRadius: 10,
     backgroundColor: '#ffffff',
 
@@ -42,7 +40,7 @@ const styles = StyleSheet.create({
       height: 0,
     },
     shadowRadius: 22,
-    elevation: 10,
+    elevation: 7,
   },
   mediaPost: {
     marginRight: 16,

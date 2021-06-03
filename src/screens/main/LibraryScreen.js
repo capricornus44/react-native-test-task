@@ -1,17 +1,10 @@
 import React, {useState} from 'react';
-import {
-  View,
-  Text,
-  Image,
-  StyleSheet,
-  TouchableOpacity,
-  FlatList,
-} from 'react-native';
+import {View, Text, Image, StyleSheet, FlatList} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import moment from 'moment';
 
-import MediaCard from '../../components/MediaCard';
 import {PlayerScreen} from './PlayerScreen';
+import {MediaCard} from '../../components/MediaCard';
 
 export const LibraryScreen = ({navigation}) => {
   const [showModal, setShowModal] = useState(false);
@@ -47,7 +40,7 @@ export const LibraryScreen = ({navigation}) => {
       title: 'title4',
       duration: '13 min',
       mediaURL: '',
-      imageURL: 'http://picsum.photos/id/1002/200',
+      imageURL: 'http://picsum.photos/id/103/200',
     },
     {
       id: 5,
@@ -55,7 +48,7 @@ export const LibraryScreen = ({navigation}) => {
       title: 'title5',
       duration: '13 min',
       mediaURL: '',
-      imageURL: 'http://picsum.photos/id/1002/200',
+      imageURL: 'http://picsum.photos/id/106/200',
     },
   ]);
 
@@ -88,26 +81,7 @@ export const LibraryScreen = ({navigation}) => {
           horizontal={true}
           showsHorizontalScrollIndicator={false}
           renderItem={({item}) => (
-            <TouchableOpacity
-              activeOpacity={0.7}
-              style={styles.mediaCard}
-              onPress={() => setShowModal(true)}>
-              <Image
-                source={{uri: 'https://reactnative.dev/img/tiny_logo.png'}}
-                style={styles.mediaPost}
-              />
-
-              <View style={styles.mediaDescription}>
-                <Text style={styles.mediaSubtitle}>{item.subtitle}</Text>
-                <Text style={styles.mediaTitle}>{item.title}</Text>
-                <Text style={styles.mediaDuration}>{item.duration}</Text>
-              </View>
-
-              <Image
-                source={require('../../assets/icons/play.png')}
-                style={styles.play}
-              />
-            </TouchableOpacity>
+            <MediaCard item={item} setShowModal={setShowModal} />
           )}
         />
       </View>
@@ -149,57 +123,5 @@ const styles = StyleSheet.create({
     paddingHorizontal: 24,
     paddingVertical: 10,
     backgroundColor: '#ffffff',
-  },
-  mediaCard: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 16,
-    marginRight: 12,
-    marginBottom: 5,
-    height: 88,
-    width: 320,
-    borderRadius: 10,
-    backgroundColor: '#ffffff',
-
-    shadowColor: '#000',
-    shadowOpacity: 0.14,
-    shadowOffset: {
-      width: 0,
-      height: 0,
-    },
-    shadowRadius: 22,
-    elevation: 10,
-  },
-  mediaPost: {
-    marginRight: 16,
-    width: 56,
-    height: 56,
-  },
-  mediaDescription: {},
-  mediaSubtitle: {
-    fontWeight: '500',
-    fontSize: 14,
-    lineHeight: 16,
-    color: '#8A898E',
-    textTransform: 'capitalize',
-  },
-  mediaTitle: {
-    fontWeight: '500',
-    fontSize: 16,
-    lineHeight: 24,
-    color: '#1B181C',
-    textTransform: 'capitalize',
-  },
-  mediaDuration: {
-    fontWeight: '500',
-    fontSize: 14,
-    lineHeight: 16,
-    color: '#C2C2C2',
-  },
-  play: {
-    marginLeft: 'auto',
-    width: 14,
-    height: 16,
   },
 });
