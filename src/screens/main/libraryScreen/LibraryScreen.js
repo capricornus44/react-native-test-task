@@ -12,7 +12,6 @@ export const LibraryScreen = ({}) => {
   const currentDate = moment().format('DD MMM');
 
   const [showModal, setShowModal] = useState(false);
-
   const [media, setMedia] = useState([
     {
       id: 1,
