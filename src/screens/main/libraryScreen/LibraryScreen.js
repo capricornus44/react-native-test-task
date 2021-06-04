@@ -1,11 +1,12 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {View, Text, Image, FlatList, ImageBackground} from 'react-native';
 import moment from 'moment';
-import firestore from '@react-native-firebase/firestore';
+import fb from '../../../../firebase/config';
+fb.firestore().settings({experimentalForceLongPolling: true});
 
 import {PlayerScreen} from '../playerScreen/PlayerScreen';
 import {MediaCard} from '../../../components/mediaCard/MediaCard';
-import {media} from '../../../database/media';
+// import {meditationList} from '../../../database/media';
 import StyleSheet from './styles';
 
 export const LibraryScreen = ({}) => {
@@ -13,11 +14,20 @@ export const LibraryScreen = ({}) => {
   const currentDate = moment().format('DD MMM');
 
   const [showModal, setShowModal] = useState(false);
+  const [meditationList, setMeditationList] = useState([]);
 
   const getMeditations = async () => {
-    const meditationsList = await firestore().collection('meditations').get();
-    console.log(meditationsList);
+    await fb
+      .firestore()
+      .collection('meditations')
+      .onSnapshot(data =>
+        setMeditationList(data.docs.map(doc => ({...doc.data(), id: doc.id}))),
+      );
   };
+
+  useEffect(() => {
+    getMeditations();
+  }, []);
 
   return (
     <>
@@ -38,8 +48,8 @@ export const LibraryScreen = ({}) => {
 
       <View style={StyleSheet.lowerContainer}>
         <FlatList
-          keyExtractor={item => item.id}
-          data={media}
+          keyExtractor={item => item.title}
+          data={meditationList}
           horizontal={true}
           showsHorizontalScrollIndicator={false}
           renderItem={({item}) => (
