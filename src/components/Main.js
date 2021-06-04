@@ -4,7 +4,7 @@ import {NavigationContainer} from '@react-navigation/native';
 
 import {stateChangedUser} from '../redux/auth/authOperations';
 
-import {useRoute} from '../router';
+import {useRoute} from './Router';
 
 export const Main = () => {
   const {stateChange} = useSelector(state => state.auth);

@@ -44,7 +44,7 @@ export const LoginScreen = ({navigation}) => {
         colors={['#ffffff', '#ede8e4']}
         useAngle={true}
         angle={135}
-        style={styles.container}>
+        style={StyleSheet.container}>
         <View style={{marginBottom: isKeyboardShown ? 70 : 150}}>
           <Text style={StyleSheet.title}>Welcome Back</Text>
         </View>

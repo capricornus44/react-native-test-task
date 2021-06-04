@@ -40,9 +40,9 @@ export const useRoute = isAuth => {
         options={{
           tabBarIcon: ({focused}) =>
             focused ? (
-              <Image source={require('./assets/icons/libraryFocused.png')} />
+              <Image source={require('../assets/icons/libraryFocused.png')} />
             ) : (
-              <Image source={require('./assets/icons/library.png')} />
+              <Image source={require('../assets/icons/library.png')} />
             ),
         }}
         name="Library"
@@ -52,9 +52,9 @@ export const useRoute = isAuth => {
         options={{
           tabBarIcon: ({focused}) =>
             focused ? (
-              <Image source={require('./assets/icons/profileFocused.png')} />
+              <Image source={require('../assets/icons/profileFocused.png')} />
             ) : (
-              <Image source={require('./assets/icons/profile.png')} />
+              <Image source={require('../assets/icons/profile.png')} />
             ),
         }}
         name="Profile"
