@@ -6,7 +6,7 @@ import Video from 'react-native-video';
 import {MessageWhenPause} from '../../../components/messageWhenPause/MessageWhenPause';
 import StyleSheet from './styles';
 
-const mediaURL = require('../../../assets/mp3/niletto.mp3');
+const audioURL = require('../../../assets/mp3/niletto.mp3');
 
 export const PlayerScreen = ({setShowModal, showModal}) => {
   const [showAlert, setShowAlert] = useState(false);
@@ -25,7 +25,7 @@ export const PlayerScreen = ({setShowModal, showModal}) => {
         <Text style={StyleSheet.title}>Title</Text>
         <Text style={StyleSheet.duration}>6:59</Text>
 
-        {showAlert && (
+        {showAlert && isPaused && (
           <MessageWhenPause
             setShowModal={setShowModal}
             setShowAlert={setShowAlert}
@@ -45,7 +45,7 @@ export const PlayerScreen = ({setShowModal, showModal}) => {
             />
           </View>
           <View style={StyleSheet.controlButtons}>
-            <TouchableOpacity activeOpacity={0.7}>
+            <TouchableOpacity activeOpacity={0.7} onPress={() => {}}>
               <Image
                 style={StyleSheet.backward}
                 source={require('../../../assets/icons/back.png')}
@@ -62,7 +62,7 @@ export const PlayerScreen = ({setShowModal, showModal}) => {
                 source={require('../../../assets/icons/stop.png')}
               />
             </TouchableOpacity>
-            <TouchableOpacity activeOpacity={0.7}>
+            <TouchableOpacity activeOpacity={0.7} onPress={() => {}}>
               <Image
                 style={StyleSheet.forward}
                 source={require('../../../assets/icons/fwd.png')}
@@ -71,17 +71,15 @@ export const PlayerScreen = ({setShowModal, showModal}) => {
           </View>
         </View>
 
-        {!isPaused && (
-          <Video
-            paused={isPaused}
-            // onLoad={onLoad}
-            // onProgress={onProgress}
-
-            // ref={videoPLayer => (videoPLayer = videoPLayer)}
-            source={mediaURL}
-            style={StyleSheet.backgroundVideo}
-          />
-        )}
+        <Video
+          paused={isPaused}
+          // onLoad={handleLoad}
+          // onProgress={handleProgress}
+          //onEnd={handleEnd}
+          // ref={ref => (player = ref)}
+          source={audioURL}
+          style={StyleSheet.backgroundVideo}
+        />
       </View>
     </Modal>
   );
