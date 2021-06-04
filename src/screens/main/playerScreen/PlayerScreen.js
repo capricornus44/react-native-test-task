@@ -54,7 +54,7 @@ export const PlayerScreen = ({setShowModal, showModal}) => {
             <TouchableOpacity
               activeOpacity={0.7}
               onPress={() => {
-                setIsPaused(true);
+                setIsPaused(!isPaused);
                 setShowAlert(true);
               }}>
               <Image
@@ -74,9 +74,9 @@ export const PlayerScreen = ({setShowModal, showModal}) => {
         {!isPaused && (
           <Video
             paused={isPaused}
-            // onProgress={onProgress}
-            // onEnd={onEnd}
             // onLoad={onLoad}
+            // onProgress={onProgress}
+
             // ref={videoPLayer => (videoPLayer = videoPLayer)}
             source={mediaURL}
             style={StyleSheet.backgroundVideo}
