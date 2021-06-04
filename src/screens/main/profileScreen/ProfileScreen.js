@@ -1,5 +1,5 @@
 import React from 'react';
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {View, Text, Image, TouchableOpacity} from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -8,6 +8,8 @@ import StyleSheet from './styles';
 
 export const ProfileScreen = () => {
   const dispatch = useDispatch();
+  const userName = useSelector(state => state.auth.name);
+  console.log(userName);
 
   const handleLogout = () => {
     dispatch(logOutUser());

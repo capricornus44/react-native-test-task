@@ -51,10 +51,11 @@ export default StyleSheet.create({
   },
 
   backgroundVideo: {
-    height: 150,
-    width: '100%',
-    borderColor: 'red',
-    borderWidth: 1,
-    borderStyle: 'solid',
+    // height: 0,
+    // width: '100%',
+    // height: 100,
+    // borderColor: 'red',
+    // borderWidth: 1,
+    // borderStyle: 'solid',
   },
 });

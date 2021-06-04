@@ -6,10 +6,11 @@ import Video from 'react-native-video';
 import {MessageWhenPause} from '../../../components/messageWhenPause/MessageWhenPause';
 import StyleSheet from './styles';
 
-const testVideo = require('../../../assets/mp3/2.mp4');
+const mediaURL = require('../../../assets/mp3/niletto.mp3');
 
 export const PlayerScreen = ({setShowModal, showModal}) => {
   const [showAlert, setShowAlert] = useState(false);
+  const [isPaused, setIsPaused] = useState(false);
 
   return (
     <Modal visible={showModal} animationType="slide">
@@ -28,6 +29,7 @@ export const PlayerScreen = ({setShowModal, showModal}) => {
           <MessageWhenPause
             setShowModal={setShowModal}
             setShowAlert={setShowAlert}
+            setIsPaused={setIsPaused}
           />
         )}
 
@@ -51,7 +53,10 @@ export const PlayerScreen = ({setShowModal, showModal}) => {
             </TouchableOpacity>
             <TouchableOpacity
               activeOpacity={0.7}
-              onPress={() => setShowAlert(true)}>
+              onPress={() => {
+                setIsPaused(true);
+                setShowAlert(true);
+              }}>
               <Image
                 style={StyleSheet.pause}
                 source={require('../../../assets/icons/stop.png')}
@@ -66,12 +71,17 @@ export const PlayerScreen = ({setShowModal, showModal}) => {
           </View>
         </View>
 
-        {/* <Video
-          controls
-          // source={require('../../assets/mp3/niletto.mp3')}
-          source={mediaURL}
-          style={styles.backgroundVideo}
-        /> */}
+        {!isPaused && (
+          <Video
+            paused={isPaused}
+            // onProgress={onProgress}
+            // onEnd={onEnd}
+            // onLoad={onLoad}
+            // ref={videoPLayer => (videoPLayer = videoPLayer)}
+            source={mediaURL}
+            style={StyleSheet.backgroundVideo}
+          />
+        )}
       </View>
     </Modal>
   );
